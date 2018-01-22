@@ -3,12 +3,12 @@ VKGroups
 
 Приложение для просмотра и написания постов/комментариев в группах ВКонтакте.
 
-<img src="https://raw.githubusercontent.com/HeaTTheatR/VKGroups/master/data/images/screenshoots/previous_1.jpg" 
+<img src="https://raw.githubusercontent.com/HeaTTheatR/VKGroups/master/data/screenshoots/previous_1.jpg" 
 align="center"/>
 
 VKGroups находится в процессе разработки и пока не рекомендуется для использования.
 
-<img src="https://raw.githubusercontent.com/HeaTTheatR/VKGroups/master/data/images/screenshoots/previous_2.jpg" 
+<img src="https://raw.githubusercontent.com/HeaTTheatR/VKGroups/master/data/screenshoots/previous_2.jpg" 
 align="center"/>
 
 Приложение написано с использованием фреймворка для  кроссплатформенной разработки <Kivy>.
@@ -44,7 +44,7 @@ python3 main.py
 
 Перейдите по ссылке, скачайте и установите на своем девайсе [PyDroid3](https://play.google.com/store/apps/details?id=ru.iiec.pydroid3). Откройте приложение, выберите раздел <Pip/Quick Install>, найдите библиотеку pillow и выполните установку. Далее откройте в редакторе PyDroid3 файл main.py из репозитория VKGroups и запустите его, как показано на рисунке ниже:
 
-<img src="https://raw.githubusercontent.com/HeaTTheatR/VKGroups/master/data/images/screenshoots/previous_3.jpg" 
+<img src="https://raw.githubusercontent.com/HeaTTheatR/VKGroups/master/data/screenshoots/previous_3.jpg" 
 align="center"/>
 
 Пожалуйста, пришлите лог ошибки, если приложение не запустится или даст сбой в процессе использования. Лог ошибки пишется в корневую директорию проекта под именем error.log.
