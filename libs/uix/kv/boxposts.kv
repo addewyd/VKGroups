@@ -1,0 +1,33 @@
+# VKGroups
+#
+# Copyright © 2010-2018 HeaTTheatR
+#
+# Для предложений и вопросов:
+# <kivydevelopment@gmail.com>
+# 
+# Данный файл распространяется по условиям той же лицензии,
+# что и фреймворк Kivy.
+
+# View для вывода списка постов группы.
+
+
+<BoxPosts>:
+
+    RecycleView:
+        id: rv
+        key_viewclass: 'viewclass'
+        key_size: 'height'
+        bar_width: dp(4)
+        bar_color: root._app.theme_cls.primary_color
+        on_scroll_y: root.check_pos_scroll(self.scroll_y)
+        on_scroll_stop: app.form_for_messages_hide()
+
+        RecycleBoxLayout:
+            id: box
+            default_size: None, None
+            default_size_hint: 1, None
+            size_hint_y: None
+            height: self.minimum_height
+            orientation: 'vertical'
+            spacing: dp(10)
+            padding: dp(5)

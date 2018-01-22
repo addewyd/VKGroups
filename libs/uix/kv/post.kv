@@ -1,0 +1,117 @@
+# VKGroups
+#
+# Copyright © 2010-2018 HeaTTheatR
+#
+# Для предложений и вопросов:
+# <kivydevelopment@gmail.com>
+# 
+# Данный файл распространяется по условиям той же лицензии,
+# что и фреймворк Kivy.
+
+#:import ObjectProperty kivy.properties.ObjectProperty
+#:import MDCard kivymd.card.MDCard
+#:import MDIconButton kivymd.button.MDIconButton
+#:import MDSeparator kivymd.card.MDSeparator
+#:import Post libs.uix.baseclass.post.Post
+#:import LeftIconAsync libs.uix.lists.LeftIconAsync
+
+# Тело поста.
+
+
+<Post>:
+    author_date: ''
+    text_post: ''
+    count_comments: ''
+    link_on_avatar: ''
+    post_id: ''
+    user_id: 0
+    status_user: 'laptop'
+    index: 0
+    instance_box_posts: ObjectProperty()
+
+    size_hint_y: None
+    minimum_height: self.minimum_height
+
+    MDCard:
+        id: box_post
+        size_hint_y: None
+        height: root.height
+        spacing: dp(5)
+        padding: dp(5)
+        orientation: 'vertical'
+
+        # Аватар, имя автора и дата поста.
+        BoxLayout:
+            size_hint_y: None
+            height: dp(50)
+            spacing: dp(10)
+
+            LeftIconAsync:
+                source: root.link_on_avatar
+                size_hint_x: None
+                width: self.height
+                allow_stretch: True
+                on_release: app.tap_on_icon_user(root.user_id)
+
+            Label:
+                markup: True
+                text: root.author_date
+                text_size: self.width, None
+                size_hint_y: None
+                height: self.texture_size[1]
+                color: [0, 0, 0, 1]
+
+            MDIconButton:
+                theme_text_color: 'Custom'
+                text_color: app.theme_cls.primary_color
+                # FIXME: не устанавливается цвет задизабленной кнопки.
+                #disabled: True
+                #md_bg_color_disabled: app.theme_cls.primary_color 
+                icon: root.status_user
+
+        MDSeparator:
+            height: dp(1)
+
+        # Текст поста.
+        Label:
+            id: text_post
+            text: '[ref=text]%s[/ref]' % root.text_post
+            unicode_errors: 'ignore'
+            markup: True
+            font_size: '14sp'
+            text_size: self.width - 5, dp(120)
+            valign: 'top'
+            color: 0, 0, 0, 1
+
+        MDSeparator:
+            height: dp(1)
+
+        Widget:
+            size_hint_y: None
+            height: dp(5)
+
+        # Иконка и количество комментариев.
+        BoxLayout:
+            size_hint_y: None
+            height: dp(30)
+            spacing: dp(10)
+            padding: dp(5)
+
+            MDIconButton:
+                id: button_comment
+                theme_text_color: 'Custom'
+                text_color: app.theme_cls.primary_color
+                icon: 'comment'
+                on_release: 
+                    root.tap_on_icon_comments(\
+                    root.post_id, root.count_comments, root.text_post,\
+                    root.author_date, root.link_on_avatar)
+
+            Label:
+                text: root.count_comments
+                text_size: self.width, None
+                font_size: '11sp'
+                color: [0, 0, 0, 1]
+                size_hint_y: None
+                height: button_comment.height
+                valign: 'top'

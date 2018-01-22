@@ -1,0 +1,171 @@
+# -*- coding: utf-8 -*-
+#
+# VKGroups
+#
+# Copyright © 2010-2018 HeaTTheatR
+#
+# Для предложений и вопросов:
+# <kivydevelopment@gmail.com>
+# 
+# Данный файл распространяется по условиям той же лицензии,
+# что и фреймворк Kivy.
+
+#:import ObjectProperty kivy.properties.ObjectProperty
+#:import MDFlatButton kivymd.button.MDFlatButton
+#:import MDCard kivymd.card.MDCard
+#:import MDSeparator kivymd.card.MDSeparator
+#:import Comment libs.uix.baseclass.comment.Comment
+#:import CommentedPost libs.uix.baseclass.comment.CommentedPost
+#:import LeftIconAsync libs.uix.lists.LeftIconAsync
+
+# View для вывода списка комментариев к выбранному посту.
+
+
+<SpacerCommentedPost@Widget>:
+
+
+# Комментируемый пост.
+
+<CommentedPost>:
+    id: commented_post
+    count_comments: ''
+    text_post: ''
+    author_date: ''
+    link_on_avatar: ''
+    post_id: ''
+
+    size_hint_y: None
+    minimum_height: self.minimum_height
+
+    MDCard:
+        orientation: 'vertical'
+        size_hint_y: None
+        height: root.height
+
+        # Аватар, имя и дата поста для которого выводятся комментарии.
+        BoxLayout:
+            size_hint_y: None
+            height: dp(50)
+            spacing: dp(5)
+            padding: dp(5)
+        
+            canvas.before:
+                Color:
+                    rgba:
+                        app.theme_cls.primary_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            LeftIconAsync:
+                source: root.link_on_avatar
+                size_hint_x: None
+                width: self.height
+                allow_stretch: True
+
+            Label:
+                markup: True
+                text: root.author_date
+                text_size: self.width, None
+                color: 0, 0, 0, 1
+
+        MDSeparator:
+            height: dp(1)
+
+        # Текст поста.
+        Label:
+            text: root.text_post
+            unicode_errors: 'ignore'
+            markup: True
+            font_size: '14sp'
+            text_size: self.width - 5, None
+            valign: 'top'
+            size_hint_y: None
+            height: self.texture_size[1]
+            color: 0, 0, 0, 1
+            # FIXME: # 1 (./FIXME)
+            on_height: root.height = self.height + 50
+
+        # Количество комментариев к посту.
+        Label:
+            text: '%s: %s' % (app.translation._('Комментариев'), root.count_comments)
+            size_hint_y: None
+            bold: True
+            height: self.texture_size[1]
+            font_size: '12sp'
+
+            canvas.before:
+                Color:
+                    rgba:
+                        app.theme_cls.primary_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+# Тело комментария.
+<Comment>:
+    index: 0
+    author_date: ''
+    text_post: ''
+    count_comments: ''
+    link_on_avatar: ''
+    comment_id: ''
+    whom_name: ''
+    user_id: 0
+    instance_box_posts: ObjectProperty()
+
+    size_hint_y: None
+    minimum_height: self.minimum_height
+
+    MDCard:
+        size_hint_y: None
+        height: root.height
+        spacing: dp(5)
+        padding: dp(5)
+        orientation: 'vertical'
+
+        # Аватар, имя автора и дата поста.
+        BoxLayout:
+            size_hint_y: None
+            height: dp(50)
+            spacing: dp(10)
+
+            LeftIconAsync:
+                source: root.link_on_avatar
+                size_hint_x: None
+                width: self.height
+                allow_stretch: True
+                on_release: app.tap_on_icon_user(root.user_id)
+
+            Label:
+                markup: True
+                text: root.author_date
+                text_size: (self.width, None)
+                color: 0, 0, 0, 1
+
+        MDSeparator:
+            height: dp(1.1)
+
+        # Текст комментария.
+        Label:
+            text: root.text_post
+            unicode_errors: 'ignore'
+            markup: True
+            font_size: '14sp'
+            text_size: self.width - 5, dp(120)
+            color: 0, 0, 0, 1
+            valign: 'top'
+            #size_hint_y: None
+            #height: self.texture_size[1]
+            # FIXME: # 1 (./FIXME)
+            #on_height: root.height = self.height + 100
+
+        MDSeparator:
+            height: dp(1)
+
+        # Кнопка 'Ответить' на комментарий.
+        MDFlatButton:
+            text: app.translation._(' Ответить')
+            theme_text_color: 'Custom'
+            text_color: app.theme_cls.primary_color
+            on_release: root.tap_on_answer_comment(root.comment_id, root.whom_name)

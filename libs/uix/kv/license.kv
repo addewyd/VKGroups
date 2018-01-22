@@ -1,0 +1,50 @@
+# -*- coding: utf-8 -
+#
+# VKGroups
+#
+# Copyright © 2010-2018 HeaTTheatR
+#
+# Для предложений и вопросов:
+# <kivydevelopment@gmail.com>
+# 
+# Данный файл распространяется по условиям той же лицензии,
+# что и фреймворк Kivy.
+
+# Экран с текстом лицензии.
+
+#:import MDSeparator kivymd.card.MDSeparator
+#:import ShowLicense libs.uix.baseclass.license.ShowLicense
+
+
+<ShowLicense>:
+    name: 'show license'
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(10), dp(10)
+        spacing: dp(10)
+
+        Label:
+            size_hint: None, None
+            height: dp(20)
+            width: self.texture_size[0]
+            halign: 'left'
+            color: app.theme_cls.primary_color
+            font_size: '18sp'
+            text: app.translation._('MIT LICENSE')
+
+        MDSeparator:
+
+        Image:
+            source: 'data/images/open-source-logo.png'
+
+        ScrollView:
+
+            Label:
+                id: text_license
+                color: 0, 0, 0, 1
+                font_size: '13sp'
+                text_size: self.width, None
+                size_hint_y: None
+                markup: True
+                height: self.texture_size[1]

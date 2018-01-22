@@ -1,0 +1,226 @@
+# Copyright (C) 2017 Ivanov Yuri aka HeaTTheatR
+# This file is distributed under the same license as the Kivy package.
+# Ivanov Yuri aka HeaTTheatR <gorodage@gmail.com>, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-03 12:22+0300\n"
+"PO-Revision-Date: 2017-01-11 15:36+0200\n"
+"Last-Translator: Ivanov Yuri aka HeaTTheatR <gorodage@gmail.com>\n"
+"Language-Team: Ivanov Yuri aka HeaTTheatR <gorodage@gmail.com>\n"
+"Language: Russian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: program.py:181
+msgid " Загрузка..."
+msgstr ""
+
+#: program.py:216
+msgid "Участники"
+msgstr ""
+
+#: program.py:299
+msgid "Добавить"
+msgstr ""
+
+#: program.py:300 program.py:672
+msgid "Отмена"
+msgstr ""
+
+#: program.py:326
+msgid "Введите ID группы:"
+msgstr ""
+
+#: program.py:363
+msgid "Повторите попытку позже…"
+msgstr ""
+
+#: program.py:365
+msgid "Соединение Интернет отсутствует"
+msgstr ""
+
+#: program.py:368
+msgid "Неизвестная ошибка…"
+msgstr ""
+
+#: program.py:380
+msgid "Повторить попытку"
+msgstr ""
+
+#: program.py:417
+msgid "Sent!"
+msgstr ""
+
+#: program.py:427
+msgid "Error while sending!"
+msgstr ""
+
+#: program.py:458
+msgid "This file unsupported!"
+msgstr ""
+
+#: program.py:460 program.py:489
+msgid "This is not image!"
+msgstr ""
+
+#: program.py:495
+msgid "Аватар изменён"
+msgstr ""
+
+#: program.py:597
+msgid "Нажмите еще раз для выхода"
+msgstr ""
+
+#: program.py:610
+#, python-brace-format
+msgid ""
+"[size=20][b]VKGroups[/b][/size]\n"
+"\n"
+"[b]Версия:[/b] {version}\n"
+"[b]Лицензия:[/b] MIT\n"
+"\n"
+"[size=20][b]Разработчики[/b][/size]\n"
+"\n"
+"[b]Backend:[/b] [ref=https://m.vk.com/fogapod][color={link_color}]Евгений "
+"Ершов[/color][/ref]\n"
+"[b]Frontend:[/b] [ref=https://m.vk.com/heattheatr][color={link_color}]Иванов "
+"Юрий[/color][/ref]\n"
+"\n"
+"[b]Исходный код:[/b] [ref=https://github.com/HeaTTheatR/KivyIssues]"
+"[color={link_color}]GitHub[/color][/ref]"
+msgstr ""
+
+#: program.py:631
+#, python-format
+msgid "%s"
+msgstr ""
+
+#: program.py:639 libs/uix/kv/license.kv:35
+msgid "MIT LICENSE"
+msgstr ""
+
+#: program.py:656 program.py:671 libs/utils/showplugins.py:34
+#: libs/utils/showplugins.py:53
+msgid "Да"
+msgstr ""
+
+#: program.py:667
+#, python-format
+msgid "Загрузить файл %s"
+msgstr ""
+
+#: program.py:668
+msgid "Больше не спрашивать"
+msgstr ""
+
+#: program.py:683
+msgid "Загруженно"
+msgstr ""
+
+#: program.py:684
+msgid "Размер файла"
+msgstr ""
+
+#: libs/utils/showplugins.py:104
+msgid "Нет информации о плагине!"
+msgstr ""
+
+#: libs/utils/showplugins.py:128
+msgid "Нет установленных плагинов!"
+msgstr ""
+
+#: libs/utils/authorization.py:26
+msgid "Field Login empty!"
+msgstr ""
+
+#: libs/utils/authorization.py:29
+msgid "Field Password empty!"
+msgstr ""
+
+#: libs/utils/authorization.py:32
+msgid "ID group is didgest!"
+msgstr ""
+
+#: libs/utils/authorization.py:67
+msgid "Авторизация..."
+msgstr ""
+
+#: libs/utils/authorization.py:93
+msgid "Загрузка аватара..."
+msgstr ""
+
+#: libs/utils/authorization.py:112
+msgid "Получение информации о группе..."
+msgstr ""
+
+#: libs/utils/authorization.py:117
+msgid "Загрузка имени пользователя..."
+msgstr ""
+
+#: libs/utils/authorization.py:127
+msgid "Загрузка кол-ва вопросов в группе..."
+msgstr ""
+
+#: libs/uix/kv/navdrawer.kv:72
+msgid "Загрузка имени…"
+msgstr ""
+
+#: libs/uix/kv/navdrawer.kv:89
+msgid "Меню:"
+msgstr ""
+
+#: libs/uix/kv/navdrawer.kv:93
+msgid "Мои группы"
+msgstr ""
+
+#: libs/uix/kv/navdrawer.kv:98
+msgid "Плагины"
+msgstr ""
+
+#: libs/uix/kv/navdrawer.kv:103
+msgid "Язык"
+msgstr ""
+
+#: libs/uix/kv/navdrawer.kv:108
+msgid "Лицензия"
+msgstr ""
+
+#: libs/uix/kv/startscreen.kv:42
+msgid "В группе появились новые вопросы!"
+msgstr ""
+
+#: libs/uix/kv/comment.kv:89
+msgid "Комментариев"
+msgstr ""
+
+#: libs/uix/kv/comment.kv:164
+msgid " Ответить"
+msgstr ""
+
+#: libs/uix/kv/list_user_groups.kv:41
+msgid "Добавить группу"
+msgstr ""
+
+#: libs/uix/kv/navbutton.kv:28
+msgid "На главную"
+msgstr ""
+
+#: libs/uix/kv/navbutton.kv:39
+msgid "Записи группы"
+msgstr ""
+
+#: libs/uix/kv/passwordform.kv:47
+msgid "Логин"
+msgstr ""
+
+#: libs/uix/kv/passwordform.kv:55
+msgid "Пароль"
+msgstr ""
+
+#: libs/uix/kv/passwordform.kv:63
+msgid "ID группы ВКонтакте"
+msgstr ""

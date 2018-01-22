@@ -1,0 +1,50 @@
+# VKGroups
+#
+# Copyright © 2010-2018 HeaTTheatR
+#
+# Для предложений и вопросов:
+# <gorodage@gmail.com>
+# 
+# Данный файл распространяется по условиям той же лицензии,
+# что и фреймворк Kivy.
+
+# Экран загрузки информации с сервера.
+
+#:import MDSpinner kivymd.spinner.MDSpinner
+
+
+<LoadScreen>:
+    name: 'load screen'
+
+    FloatLayout:
+
+        Image:
+            source: 'data/images/presplash_invert.png'
+            opacity: .3
+
+        BoxLayout:
+            id: box
+            orientation: 'vertical'
+            padding: dp(0), dp(10)
+
+            Widget:
+            Widget:
+
+            Label:
+                id: status
+                font_size: '14sp'
+                bold: True
+                color: 0, 0, 0, 1
+                markup: True
+                halign: 'center'
+                on_ref_press: root.open_url(*args)
+
+            MDSpinner:
+                id: spinner
+                size_hint: None, None
+                size: dp(46), dp(46)
+                pos_hint: {'center_x': .5}
+                active: False
+
+            Widget:
+            Widget:

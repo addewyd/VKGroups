@@ -1,0 +1,29 @@
+# VKGroups
+#
+# Copyright © 2010-2018 HeaTTheatR
+#
+# Для предложений и вопросов:
+# <kivydevelopment@gmail.com>
+# 
+# Данный файл распространяется по условиям той же лицензии,
+# что и фреймворк Kivy.
+
+# Бокс для аттачей.
+
+#:import MDCard kivymd.card.MDCard
+#:import AttachLink libs.uix.baseclass.attachlink.AttachLink
+
+
+<AttachLink>:
+    _app: app
+    attach_list: []
+    on_attach_list: root.add_attach(root.attach_list)
+
+    MDCard:
+        id: box_attach
+        orientation: 'vertical'
+        size_hint_y: None
+        spacing: dp(5)
+        padding: dp(5)
+        height: root.height
+

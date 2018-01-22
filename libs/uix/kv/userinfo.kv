@@ -1,0 +1,119 @@
+# VKGroups
+#
+# Copyright © 2010-2018 HeaTTheatR
+#
+# Для предложений и вопросов:
+# <kivydevelopment@gmail.com>
+# 
+# Данный файл распространяется по условиям той же лицензии,
+# что и фреймворк Kivy.
+
+# Экран с информацией о пользователе.
+
+#:import MDLabel kivymd.label.MDLabel
+#:import LeftIconAsync libs.uix.lists.LeftIconAsync
+#:import Window kivy.core.window.Window
+#:import MDRaisedButton kivymd.button.MDRaisedButton
+
+
+<UserInfo>:
+    name: 'user info'
+    on_leave:
+        user_name.text = '%s\n[size=16]%s[/size]'; \
+        label_city.text = '[b]%s[/b]: %s'; \
+        label_bdate.text = '[b]%s[/b]: %s'; \
+        label_marital_status.text = '[b]%s[/b]: %s'
+        label_user_status.text = '%s'
+
+    FloatLayout:
+        id: float_layout
+
+        ScrollView:
+            on_scroll_start: app.form_for_messages_hide()
+   
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+
+                BoxLayout:
+                    orientation: 'vertical'
+                    spacing: dp(10)
+                    padding: dp(5)
+                    size_hint_y: None
+                    height: dp(500)
+
+                    BoxLayout:
+                        id: box_avatar
+                        size_hint_y: None
+                        height: dp(80)
+                        spacing: dp(5)
+
+                        canvas:
+                            Color:
+                                rgba:
+                                    app.theme_cls.primary_color
+                            Rectangle:
+                                pos: self.pos
+                                size: self.size
+
+                        LeftIconAsync:
+                            id: avatar
+
+                        MDLabel:
+                            id: user_name
+                            bold: True
+                            markup: True
+                            color: 1, 1, 1, 1
+                            size_hint_x: None
+                            width: Window.width - avatar.height
+                            text: '%s\n[size=16]%s[/size]'
+
+                    MDLabel:
+                        id: label_user_status
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        text: '%s'
+
+                    MDRaisedButton:
+                        id: message_button
+                        text: app.translation._('Сообщение')
+
+                    MDLabel:
+                        text: ' ' +  app.translation._('Основная информация:')
+                        size_hint: 1, None
+                        height: dp(25)
+                        font_size: '13sp'
+                        bold: True
+                        color: 1, 1, 1, 1
+
+                        canvas.before:
+                            Color:
+                                rgba: app.theme_cls.primary_color
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+
+                    BoxLayout:
+                        orientation: 'vertical'
+                        spacing: dp(5)
+                        padding: dp(5)
+                        size_hint_y: None
+                        height: dp(80) #self.minimum_height
+
+                        MDLabel:
+                            id: label_bdate
+                            markup: True
+                            text: '[b]%s[/b]: %s'
+
+                        MDLabel:
+                            id: label_city
+                            markup: True
+                            text: '[b]%s[/b]: %s'
+
+                        MDLabel:
+                            id: label_marital_status
+                            markup: True
+                            text: '[b]%s[/b]: %s'
+
+                    Widget:

@@ -1,0 +1,8 @@
+Mercury/
+Mercury.modules
+*.pyc
+*.pyo
+*.log
+.idea
+vkgroups.ini
+__pycache__

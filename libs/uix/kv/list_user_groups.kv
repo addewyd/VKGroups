@@ -1,0 +1,43 @@
+# -*- coding: utf-8 -*-
+#
+# VKGroups
+#
+# Copyright © 2016  Easy
+#
+# Для предложений и вопросов:
+# <kivydevelopment@gmail.com>
+# 
+# Данный файл распространяется по условиям той же лицензии,
+# что и фреймворк Kivy.
+
+#:import MDFlatButton kivymd.button.MDFlatButton
+#:import Lists libs.uix.lists.Lists
+
+
+# Окно со списком групп пользователя.
+
+<ListUserGroups>:
+    orientation: 'vertical'
+
+    Lists:
+        id: groups_list
+        flag: 'two_list_custom_icon' # 'two_list_custom_icon_async'
+
+    AnchorLayout:
+        anchor_x: 'right'
+        size_hint: 1, None
+        height: dp(40)
+        padding: dp(8), dp(8)
+        spacing: dp(4)
+
+        GridLayout:
+            rows: 1
+            size_hint: None, None
+            height: dp(36)
+            width: self.minimum_width
+
+            MDFlatButton:
+                id: add_group
+                text: app.translation._('Добавить группу')
+                theme_text_color: 'Custom'
+                text_color: app.theme_cls.primary_color

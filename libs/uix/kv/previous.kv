@@ -1,0 +1,94 @@
+# VKGroups
+#
+# Copyright © 2010-2018 HeaTTheatR
+#
+# Для предложений и вопросов:
+# <kivydevelopmend@gmail.com>
+# 
+# Данный файл распространяется по условиям той же лицензии,
+# что и фреймворк Kivy.
+
+# Главный экран приложения.
+
+#:import webbrowser webbrowser
+
+
+<Previous@BoxLayout>:
+    id: box
+    orientation: 'vertical'
+    padding: dp(5), dp(15)
+    spacing: dp(10)
+
+    canvas:
+        Color:
+            rgba: 0, 0, 0, .05
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    AnchorLayout:
+        anchor_x: 'left'
+        size_hint_y: .1
+
+        GridLayout:
+            rows: 1
+            size_hint: None, None
+            width: dp(group_title.width + group_name.width)
+
+            BoxLayout:
+                spacing: dp(10)
+
+                # Лого группы.
+                AsyncImage:
+                    id: group_title
+                    size_hint: None, None
+
+                # Название группы.
+                Label:
+                    id: group_name
+                    markup: True
+                    size_hint_x: None
+                    width: self.texture_size[0]
+                    halign: 'left'
+                    color: 0, 0, 0, 1
+
+    # Ссылка на группу
+    Label:
+        id: group_link
+        size_hint: None, None
+        height: dp(20)
+        width: self.texture_size[0]
+        halign: 'left'
+        color: app.theme_cls.primary_color
+        font_size: '12sp'
+        markup: True
+        on_ref_press: webbrowser.open(args[1])
+
+    # Количество участников.
+    Label:
+        id: group_people
+        size_hint_y: None
+        height: dp(25)
+        font_size: '13sp'
+        bold: True
+
+        canvas.before:
+            Color:
+                rgba: app.theme_cls.primary_color
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+    ScrollView:
+        size_hint_y: .3
+
+        # Описание группы.
+        Label:
+            id: description
+            color: 0, 0, 0, 1
+            font_size: '12sp'
+            text_size: self.width, None
+            size_hint_y: None
+            font_size: '13sp'
+            height: self.texture_size[1]
+ 

@@ -1,0 +1,39 @@
+# -*- coding: utf-8 -*-
+#
+# VKGroups
+#
+# Copyright © 2010-2018 HeaTTheatR
+#
+# Для предложений и вопросов:
+# <kivydevelopment@gmail.com>
+# 
+# Данный файл распространяется по условиям той же лицензии,
+# что и фреймворк Kivy.
+
+#:import MDBottomNavigation kivymd.tabs.MDBottomNavigation
+#:import MDBottomNavigationItem kivymd.tabs.MDBottomNavigationItem
+
+
+<NavigationButton>:
+    name: 'navigation button'
+    _app: app
+
+    MDBottomNavigation:
+        id: bottom_navigation
+
+        MDBottomNavigationItem:
+            id: home_page
+            name: 'Home_page'
+            text: app.translation._('На главную')
+            icon: 'alert-octagon'
+            on_tab_press: app.on_tab_press(self)
+
+            Previous:
+                id: previous
+
+        MDBottomNavigationItem:
+            name: 'Wall_posts'
+            text: app.translation._('Записи группы')
+            icon: 'alert-octagon'
+            on_tab_press: app.on_tab_press(self)
+
