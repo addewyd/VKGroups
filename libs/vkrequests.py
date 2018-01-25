@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import time
 import re
 
@@ -445,7 +443,7 @@ def get_issues(**kwargs):
     offset = kwargs.get('offset', '0')
     post_count = kwargs.get('count', '30')
 
-    return api.wall.get(owner_id=MGROUP_ID, filter='others', extended='1',
+    return api.wall.get(owner_id=MGROUP_ID, filter='all', extended='1',
                         offset=offset, count=post_count)
 
 

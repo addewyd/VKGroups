@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 '''
 VKGroups
 
@@ -838,6 +836,8 @@ class VKGroups(App, AuthorizationOnVK, GetAndSaveLoginPassword):
                 self.manager.current = 'user info'
                 set_value_for_screen(self.screen.ids.user_info)
 
+        if user_id == int(self.group_id):
+            return
         result = None
         self.load_dialog.open()
         Clock.schedule_once(wait_result, 0)

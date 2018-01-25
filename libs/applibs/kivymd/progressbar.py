@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from kivy.lang import Builder
 from kivy.properties import ListProperty, OptionProperty, BooleanProperty
 from kivy.utils import get_color_from_hex

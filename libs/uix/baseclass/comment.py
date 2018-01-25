@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 '''
 VKGroups
 
@@ -19,14 +17,11 @@ from libs.utils._recycledataviewbehavior import _RecycleDataViewBehavior
 
 
 class Comment(BoxLayout):
-    def tap_on_answer_comment(self, comment_id, whom_name):
+    def tap_on_answer_comment(self, comment_id: int, whom_name: str):
         '''Вызывается при тапе на строку "Ответить" комментария.
 
         :comment_id: id комментария, которому отвечают;
-        :type comment_id: type int;
-
         :whom_name: имя автора комментария, которому отвечают;
-        :type whom_name: type str;
 
         '''
 

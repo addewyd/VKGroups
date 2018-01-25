@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from kivy.lang import Builder
 from kivy.properties import StringProperty, ListProperty, NumericProperty
 from kivy.uix.behaviors import ToggleButtonBehavior

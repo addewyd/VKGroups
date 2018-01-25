@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 '''
 VKGroups
 
@@ -33,16 +31,10 @@ from libs.utils.work_with_dataposts import mark_links_in_post, get_info_from_pos
 from kivymd.label import MDLabel
 from toast import toast
 
-class BoxPosts(FloatLayout):
 
+class BoxPosts(FloatLayout):
     _app = ObjectProperty()
     '''<class 'program.Program'>'''
-
-    # TODO: add info
-    copy_posts_list = ListProperty()
-
-    # TODO: Add info.
-    items_list = ListProperty()
 
     show_comments = BooleanProperty(False)
     '''Если True - выводим комментарии.'''
@@ -58,10 +50,11 @@ class BoxPosts(FloatLayout):
 
     def __init__(self, **kwargs):
         super(BoxPosts, self).__init__(**kwargs)
-        self.ids.rv.data = [] #  список постов/комментариев для RecycleView
-        # Данные о постах/комментариях, полученные с сервера функциями
-        # get_issues и get_comments из модуля vkrequests.
+
+        self.ids.rv.data = []
         self.profiles_dict = {}
+        self.copy_posts_list = []
+        self.items_list = []
 
         with self.canvas:
             self.color = Color(0, 0, 0, 0, mode='rgba')
@@ -202,11 +195,11 @@ class BoxPosts(FloatLayout):
             '''Имя, аватар, дата поста/комментария.'''
 
             if not add_commented_post:  # для постов/комментариев
-                data['author_id'] =  items_dict['from_id']
+                data['author_id'] =  user_id
                 data['author_name'] = \
-                    self.profiles_dict[items_dict['from_id']]['author_name']
+                    self.profiles_dict[user_id]['author_name']
                 data['link_on_avatar_author'] = \
-                    self.profiles_dict[items_dict['from_id']]['avatar']
+                    self.profiles_dict[user_id]['avatar']
                 data['date'] = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(
                     items_dict['date']
                     )
@@ -218,9 +211,9 @@ class BoxPosts(FloatLayout):
 
             if not add_commented_post:
                 if self.profiles_dict[
-                        items_dict['from_id']]['author_online']:
+                        user_id]['author_online']:
                     data['status_user_icon'] = self._app.DEVISE_ONLINE[
-                        self.profiles_dict[items_dict['from_id']]['device']
+                        self.profiles_dict[user_id]['device']
                     ]
                 else:
                     data['status_user_icon'] = self._app.DEVISE_ONLINE[0]
@@ -231,6 +224,10 @@ class BoxPosts(FloatLayout):
             items_dict = {}
 
         data = {}
+        if items_dict['from_id'] not in self.profiles_dict:
+            user_id = -items_dict['from_id']
+        else:
+            user_id = items_dict['from_id']
 
         # Для комментариев.
         if self.show_comments:

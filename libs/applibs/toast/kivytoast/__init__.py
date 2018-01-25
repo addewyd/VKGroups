@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 ''' 
 Разработано специально для проекта VKGroups -
 http://github.com/HeaTTheatR/VKGroups

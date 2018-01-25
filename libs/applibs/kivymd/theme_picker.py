@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from kivy.lang import Builder
 from kivy.properties import OptionProperty
 from kivy.uix.floatlayout import FloatLayout

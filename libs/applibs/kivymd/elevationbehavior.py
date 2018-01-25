@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.properties import (ListProperty, ObjectProperty, NumericProperty)

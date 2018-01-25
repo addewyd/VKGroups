@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 Circular Date & Time Picker for Kivy
 ====================================

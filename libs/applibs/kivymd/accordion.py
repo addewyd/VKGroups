@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from kivy.lang import Builder
 from kivy.properties import StringProperty, ListProperty, OptionProperty, ObjectProperty
 from kivy.uix.accordion import Accordion, AccordionItem

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 Файл создан для демонстрации работы метода 
 vkrequests.get_message_updates()

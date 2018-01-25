@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from kivy.lang import Builder
 from kivy.uix.modalview import ModalView
 from kivy.uix.floatlayout import FloatLayout
