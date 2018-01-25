@@ -4,3 +4,5 @@ Mercury.modules
 .idea
 vkgroups.ini
 __pycache__
+.kivy/icon
+data/images/avatar.png
