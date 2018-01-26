@@ -116,7 +116,7 @@ class VKGroups(App, AuthorizationOnVK, GetAndSaveLoginPassword):
         # Текущие менеджер, экран и имя вкладок MDBottomNavigationItem.
         self.current_screen_tab = None
         self.current_tab_manager = None
-        self.name_press_tab = ''
+        self.name_press_tab = 'Home_page'
 
         self.file_manager_not_opening = True  # файловый менеджер ещё не открывался
         self.password_form = None
@@ -468,7 +468,7 @@ class VKGroups(App, AuthorizationOnVK, GetAndSaveLoginPassword):
         if self.flag_attach in ('FILE', 'FOTO'):
             self.show_manager(self.last_path, self.tap_on_file_in_filemanager)
         elif self.flag_attach == 'SEND':
-            if self.manager.current == 'navigation button' or self.manager.current == 'user info':
+            if self.manager.current == 'navigation button' and self.name_press_tab != 'Home_page' or self.manager.current == 'user info':
                 self.form_for_messages.hide()
 
             if text.isspace() or text != '':
