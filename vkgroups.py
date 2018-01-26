@@ -490,7 +490,7 @@ class VKGroups(App, AuthorizationOnVK, GetAndSaveLoginPassword):
         def _remove_attach(interval):
             parent_widget.remove_widget(instance_attach)
 
-        if select_instance_attach in self.box_for_attach_file.children:
+        if self.box_for_attach_file and select_instance_attach in self.box_for_attach_file.children:
             parent_widget = self.box_for_attach_file
         else:
             parent_widget = self.box_for_attach_image
