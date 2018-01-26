@@ -104,7 +104,7 @@ class ShowPlugins(object):
             )
         else:
             info_plugin = open('{}/libs/plugins/{}/README.rst'.format(
-                self._app.directory, name_plugin)).read()
+                self._app.directory, name_plugin), encoding='utf-8').read()
             info_plugin = info_plugin.format(
                 NAME_APP=self._app.title,
                 VERSION=self._app.started_plugins[name_plugin]['plugin-version'],
