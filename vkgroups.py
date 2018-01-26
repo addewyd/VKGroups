@@ -42,7 +42,7 @@ from kivy.metrics import dp
 from main import __version__
 
 from libs.utils import ShowPlugins, AuthorizationOnVK, GetAndSaveLoginPassword
-from libs.vkrequests import create_issue, create_comment, send_message, get_user_info
+from libs.vkrequests import create_issue, create_comment, send_message, get_user_info, get_user_name
 from libs._thread import thread
 from libs.translation import Translation
 from libs.createpreviousportrait import create_previous_portrait
@@ -244,7 +244,7 @@ class VKGroups(App, AuthorizationOnVK, GetAndSaveLoginPassword):
             self.previous.ids.description.text = \
                 self.group_info['description']
             self.nav_drawer.ids.user_name.text = \
-                '[b]%s[/b]\n[size=12]online[/size]\n' % self.user_name
+                '[b]%s[/b]\n[size=12]online[/size]\n' % get_user_name()[0]
 
             Clock.unschedule(self.wait_info_for_home_page_group)
             Clock.schedule_once(
