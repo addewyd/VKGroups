@@ -13,6 +13,7 @@ Copyright © 2010-2018 HeaTTheatR
 
 # Сохраняет контент с сервера в указанный файл.
 
+import time
 from urllib.request import urlopen
 
 result = None
@@ -54,6 +55,7 @@ def retrieve_progress_load(url, path, _tick_callback=None):
         if not chunk:
             break
         fp.write(chunk)
+        time.sleep(.5)
         count += 1
         if total_size > 0:
             percent = int(count * block_size * 100 // total_size)
