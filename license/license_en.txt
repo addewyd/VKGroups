@@ -1,4 +1,7 @@
-[color=78a5a3ff]Copyright © 2017 Easy
+[color=#000]This program is written using the Kivy framework.
+[color=78a5a3ff]Copyright © 2010-2018 Kivy Team
+
+Copyright © 2010-2018 HeaTTheatR
 
 [color=#000]Permission is hereby granted, free of charge, to any person copy of this software and associated documentation files (the [color=78a5a3ff]"Software"[color=#000]),
 to deal in the [color=78a5a3ff]Software [color=#000]without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the [color=78a5a3ff]Software[color=#000],
