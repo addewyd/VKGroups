@@ -29,7 +29,6 @@ from libs._thread import thread
 from libs.utils.work_with_dataposts import mark_links_in_post, get_info_from_post
 
 from kivymd.label import MDLabel
-from toast import toast
 
 
 class BoxPosts(FloatLayout):
@@ -261,8 +260,8 @@ class BoxPosts(FloatLayout):
 
         def check_posts_dict(interval):
             if len(self.items_list):
-                toast(str(self.real_count_posts_on_page + 20 ))
-                toast(str( self.items_list.__len__() ))
+                #toast(str(self.real_count_posts_on_page + 20 ))
+                #toast(str( self.items_list.__len__() ))
                 self.create_post_and_comments(self.items_list)
                 # Если экран для списка постов ещё не создан.
                 if not open_screen_posts:
