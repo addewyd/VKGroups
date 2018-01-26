@@ -129,13 +129,6 @@ class AuthorizationOnVK(object):
         issues_in_group, info = vkr.get_issue_count()
 
         if issues_in_group:
-            if issues_in_group > self.issues_in_group:
-                new_issues = str(issues_in_group - self.issues_in_group)
-                self.screen.ids.action_bar.right_action_items = \
-                    [['comment-plus-outline',
-                      lambda x: self.manager.screens[2].show_posts(
-                          new_issues)]]
-
             self.config.set('General', 'issues_in_group', issues_in_group)
             self.config.write()
             self.issues_in_group = issues_in_group
