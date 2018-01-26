@@ -99,7 +99,7 @@ def main():
                 txt = six.moves.urllib.parse.quote(
                     report.txt_traceback.text.encode('utf-8')
                 )
-                url = 'https://github.com/%s/issues/new?body=' + txt % NICK_NAME_AND_NAME_REPOSITORY
+                url = f'https://github.com/{NICK_NAME_AND_NAME_REPOSITORY}/issues/new?body=' + txt
                 webbrowser.open(url)
             except Exception:
                 sys.exit(1)
