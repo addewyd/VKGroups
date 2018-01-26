@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-#
 # Modified module list.py from package KivyMD
 #
 
