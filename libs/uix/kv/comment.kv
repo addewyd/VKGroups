@@ -169,3 +169,4 @@
             theme_text_color: 'Custom'
             text_color: app.theme_cls.primary_color
             on_release: root.tap_on_answer_comment(root.comment_id, root.whom_name)
+            disabled: True if root.comment_id == '' else False
