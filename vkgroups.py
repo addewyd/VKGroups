@@ -675,7 +675,7 @@ class VKGroups(App, AuthorizationOnVK, GetAndSaveLoginPassword):
             else self.screen.ids.user_info.ids.float_layout
         )
         if kwargs.get('whom_name') == '':
-        	self.form_for_messages.visible = False
+            self.form_for_messages.visible = False
 
     def form_for_messages_hide(self):
         if self.form_for_messages.visible and not self.form_for_messages.ids.text_form.focus:

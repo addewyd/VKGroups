@@ -16,7 +16,7 @@ from kivy.uix.boxlayout import BoxLayout
 
 
 class Post(BoxLayout):
-    def tap_on_icon_comments(self, post_id, count_comments, text_post, author_date, link_on_avatar):
+    def tap_on_icon_comments(self, post_id: str, count_comments: str, text_post: str, author_date: str, link_on_avatar: str):
         '''Вызывается при тапе на иконку количества комментариев.
         Запускает процесс вывода комментариев к выбранному посту.'''
 
