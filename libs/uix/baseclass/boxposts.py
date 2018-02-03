@@ -11,9 +11,6 @@ Copyright © 2010-2018 HeaTTheatR
 
 '''
 
-# Создаёт, компонует и выводит на экран список постов группы
-# и комментариев к ним.
-
 import time
 import re
 
@@ -32,6 +29,9 @@ from kivymd.label import MDLabel
 
 
 class BoxPosts(FloatLayout):
+    '''Создаёт, компонует и выводит на экран список постов группы
+    и комментариев к ним.'''
+
     _app = ObjectProperty()
     '''<class 'program.Program'>'''
 
@@ -54,21 +54,26 @@ class BoxPosts(FloatLayout):
         self.profiles_dict = {}
         self.copy_posts_list = []
         self.items_list = []
+        self.param_for_update = {}
+        self.current_count_comments_post = '0'
 
         with self.canvas:
             self.color = Color(0, 0, 0, 0, mode='rgba')
             self.rec = Rectangle(pos=(0, 0), size=self.size)
             self.bind(size=self.check_size, pos=self.check_pos)
 
-    @thread
+    #@thread
     def get_and_set_json_info_for_post_or_comments(self):
         '''Получает и присваивает json с информацией о постах/комментариях
         атрибуту items_list.'''
+        #toast(str(self.post_id))
 
         self.profiles_dict, self.items_list = \
             get_info_from_post(
                 self.count_issues_or_comments, self.post_id, self.show_comments
             )
+        #open('/sdcard/profiles.txt', 'w', encoding='utf-8').write(str( self.profiles_dict ))
+        #open('/sdcard/lists.txt', 'w', encoding='utf-8').write(str(self.items_list ))
 
     def create_attach(self, data, posts_list):
         if 'attach' in data:
@@ -255,7 +260,7 @@ class BoxPosts(FloatLayout):
 
         return data
 
-    def show_posts(self, open_screen_posts=False):
+    def show_posts(self, open_screen_posts=False, increment=False):
         '''Открывает вкладку с постами/комментариями группы.'''
 
         def check_posts_dict(interval):
@@ -272,7 +277,7 @@ class BoxPosts(FloatLayout):
                 self._app.load_dialog.dismiss()
 
         self._app.load_dialog.open()
-        self.count_issues_or_comments = str(int(self.count_issues_or_comments) + 20)
+        self.count_issues_or_comments = str(int(self.count_issues_or_comments) + 20) if increment else self.count_issues_or_comments
         self.get_and_set_json_info_for_post_or_comments()
         Clock.schedule_interval(check_posts_dict, 0)
 
@@ -288,6 +293,24 @@ class BoxPosts(FloatLayout):
             else:
                 self.show_posts(open_screen_posts=True)
                 #toast(str( self.ids.rv.data.__len__()))
+
+    def update_posts(self):
+        param = self.param_for_update
+        update = param.get('callback')
+        update(
+            param.get('post_id'),
+            str(int(param.get('count_comments')) + 1),
+            param.get('text_post'),
+            param.get('author_date'),
+            param.get('link_on_avatar')
+        )
+
+    def clear(self):
+        '''Очищает список постов для списка комментариев.'''
+
+        self.ids.rv.data = []
+        self.items_list = []
+        self.copy_posts_list = []
 
     def check_pos(self, instance, pos):
         self.rec.pos = pos

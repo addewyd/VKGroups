@@ -60,6 +60,7 @@ loadplugin.py
 import os
 import sys
 import traceback
+import ast
 
 from . manifest import Manifest
 
@@ -67,22 +68,23 @@ from . manifest import Manifest
 def load_plugin(app, string_version):
     """Загружает, верифицирует и запускает плагины."""
 
+    def check_plugins_path():
+        if not os.path.exists(plugins_path):
+            os.mkdir(plugins_path)
+            open(os.path.join(plugins_path, '__init__.py'), 'w').write('')
+            open(os.path.join(plugins_path, 'README.rst'), 'w').write(
+                'This directory for plugins of Program\n'
+                '--------------------------------------\n')
+        if not os.path.exists(os.path.join(plugins_path, 'plugins_list.list')):
+            open(
+                os.path.join(plugins_path, 'plugins_list.list'), 'w').write(str(list()))
+
     plugins_path = \
         '{}/libs/plugins'.format(os.path.split(os.path.abspath(sys.argv[0]))[0])
     app.started_plugins = {}
-
-    if not os.path.exists(plugins_path):
-        os.mkdir(plugins_path)
-        open('{}/__init__.py'.format(plugins_path), 'w').write('')
-        open('{}/README.rst'.format(plugins_path), 'w').write(
-            'This directory for plugins of Program\n'
-            '--------------------------------------\n')
-    if not os.path.exists('{}/plugins_list.list'.format(plugins_path)):
-        open('{}/plugins_list.list'.format(plugins_path), 'w').write(
-            str(list()))
-
+    check_plugins_path()
     plugin_list = \
-        eval(open('{}/plugins_list.list'.format(plugins_path)).read())
+        ast.literal_eval(open('{}/plugins_list.list'.format(plugins_path)).read())
 
     for name in os.listdir(plugins_path):
         if name.startswith('__init__.'):
@@ -111,7 +113,7 @@ def load_plugin(app, string_version):
 
             # Запускаем плагин, если он присутствует в списке активированых.
             if name in plugin_list:
-                exec(open(os.path.join(path, '__init__.py')).read(),
+                exec(open(os.path.join(path, '__init__.py'), encoding='utf-8').read(),
                      {'app': app, 'path': path})
         except Exception:
             raise Exception(traceback.format_exc())

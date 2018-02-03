@@ -11,13 +11,11 @@ Copyright © 2017 HeaTTheatR
 
 '''
 
-# Выводит окно со списком установленных плагинов.
 
 import os
 from ast import literal_eval
 
 from libs.uix.lists import Lists
-
 from dialogs import card, dialog
 
 
@@ -31,8 +29,8 @@ class ShowPlugins(object):
     def _save_status_plugin(self, dialog, name_plugin, result):
         if result == self._app.translation._('Да'):
             self._list_activate_plugins.append(name_plugin)
-            open('{}/libs/plugins/plugins_list.list'.format(
-                self._app.directory), 'w').write(str(self._list_activate_plugins))
+            with open(os.path.join(self._app.directory, 'libs', 'plugins', 'plugins_list.list'), 'w') as plugin_list:
+                plugin_list.write(str(self._list_activate_plugins))
         else:
             for item_list in self._list_plugins.ids.md_list.children:
                 if item_list.id == name_plugin:
@@ -53,10 +51,8 @@ class ShowPlugins(object):
             else:
                 try:
                     self._list_activate_plugins.remove(name_plugin)
-                    open('{}/libs/plugins/plugins_list.list'.format(
-                        self._app.directory), 'w').write(
-                            str(self._list_activate_plugins)
-                    )
+                    with open(os.path.join(self._app.directory, 'libs', 'plugins', 'plugins_list.list'), 'w') as plugin_list:
+                        plugin_list.write(str(self._list_activate_plugins))
                 except ValueError:
                     pass
         else:
@@ -68,12 +64,11 @@ class ShowPlugins(object):
 
         dict_info_plugins = {}
         self._list_activate_plugins = literal_eval(
-            open('{}/libs/plugins/plugins_list.list'.format(
-                self._app.directory)).read())
+            open(os.path.join(self._app.directory, 'libs', 'plugins', 'plugins_list.list'), encoding='utf-8').read()
+        )
 
-        for plugin in os.listdir('{}/libs/plugins'.format(self._app.directory)):
-            if not os.path.isdir('{}/libs/plugins/{}'.format(
-                    self._app.directory, plugin)):
+        for plugin in os.listdir(os.path.join(self._app.directory, 'libs', 'plugins')):
+            if not os.path.isdir(os.path.join(self._app.directory, 'libs', f'plugins/{plugin}')):
                 continue
 
             if plugin in self._list_activate_plugins:
@@ -82,13 +77,13 @@ class ShowPlugins(object):
                 active = False
 
             plugin_desc = self._app.started_plugins[plugin]['plugin-desc']
-            plugin_icon = '{}/libs/plugins/{}/plugin_logo.png'.format(
-                self._app.directory,
-                self._app.started_plugins[plugin]['plugin-package']
+            plugin_icon = os.path.join(
+                self._app.directory, 'libs', 'plugins',
+                self._app.started_plugins[plugin]['plugin-package'], 'plugin_logo.png'
             )
 
             if not os.path.exists(plugin_icon):
-                plugin_icon = 'data/logo/kivy-icon-128.png'
+                plugin_icon = os.path.join('data', 'logo', 'kivy-icon-128.png')
             dict_info_plugins[plugin] = [plugin_desc, plugin_icon, active]
 
         return dict_info_plugins
@@ -96,15 +91,14 @@ class ShowPlugins(object):
     def _show_info_plugin(self, name_plugin):
         '''Вызывается при клике на имя плагина из списка.'''
 
-        if not os.path.exists('{}/libs/plugins/{}/README.rst'.format(
-                self._app.directory, name_plugin)):
+        if not os.path.exists(os.path.join(self._app.directory, 'libs', 'plugins', name_plugin, 'README.rst')):
             dialog(
                 text=self._app.translation._('Нет информации о плагине!'),
                 title=name_plugin
             )
         else:
-            info_plugin = open('{}/libs/plugins/{}/README.rst'.format(
-                self._app.directory, name_plugin), encoding='utf-8').read()
+            info_plugin = \
+                open(os.path.join(self._app.directory, 'libs', 'plugins', name_plugin, 'README.rst'), encoding='utf-8').read()
             info_plugin = info_plugin.format(
                 NAME_APP=self._app.title,
                 VERSION=self._app.started_plugins[name_plugin]['plugin-version'],

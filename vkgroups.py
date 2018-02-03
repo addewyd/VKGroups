@@ -113,28 +113,27 @@ class VKGroups(App, AuthorizationOnVK, GetAndSaveLoginPassword):
         )
         self.window_file_manager.add_widget(self.file_manager)
 
-        # Текущие менеджер, экран и имя вкладок MDBottomNavigationItem.
+
         self.current_screen_tab = None
         self.current_tab_manager = None
         self.name_press_tab = 'Home_page'
-
-        self.file_manager_not_opening = True  # файловый менеджер ещё не открывался
+        self.file_manager_not_opening = True
         self.password_form = None
         self.box_posts = None
         self.attach_file = []
         self.attach_image = []
         self.box_for_attach_file = None
         self.box_for_attach_image = None
-        self.group_info = None # словарь с информацией, полученной с сервера о группе
+        self.group_info = None
         self.result_sending_post = None
         self.exit_interval = False
+        self.flag_attach = ''
+        self.window_user_groups = None
+        self.window_language = None
         self.path_to_avatar = os.path.join(self.directory, 'data', 'images', 'avatar.png')
         self.dict_language = ast.literal_eval(
             open(os.path.join(self.directory, 'data', 'locales', 'locales')).read()
         )
-
-        self.window_user_groups = None # окно со списком групп пользователя
-        self.window_language = None # окно со списком локализаций
 
     def get_application_config(self):
         return super(VKGroups, self).get_application_config(
@@ -287,12 +286,12 @@ class VKGroups(App, AuthorizationOnVK, GetAndSaveLoginPassword):
                 file_groups_user.write('{}')
 
         groups_user = ast.literal_eval(
-            open('%s/data/groups_user.ini'  % self.directory).read()
+            open('%s/data/groups_user.ini'  % self.directory, encoding='utf-8').read()
         )
         if not kwargs['name_group'] in groups_user:
             groups_user[kwargs['name_group']] = \
                 [kwargs['info_group'], kwargs['logo_group'], self.group_id]
-            with open(file_groups_path, 'w') as file_groups_user:
+            with open(file_groups_path, 'w', encoding='utf-8') as file_groups_user:
                 file_groups_user.write(str(groups_user))
 
     def show_login_and_password(self, selection):
@@ -336,7 +335,7 @@ class VKGroups(App, AuthorizationOnVK, GetAndSaveLoginPassword):
         if not self.window_user_groups:
             dict_groups_user = {}
             groups_user = ast.literal_eval(
-                open('%s/data/groups_user.ini' % self.directory).read()
+                open('%s/data/groups_user.ini' % self.directory, encoding='utf-8').read()
             )
 
             for name_group in groups_user.keys():
@@ -446,7 +445,8 @@ class VKGroups(App, AuthorizationOnVK, GetAndSaveLoginPassword):
 
         message = self.translation._('Sent!')
         if self.result_sending_post:
-            # TODO: добавить обновление постов.
+            # Обновляем списки постов/комментариев.
+            self.box_posts.update_posts()
             if self.manager.current != 'navigation button':
                 pass
             unschedule()
@@ -583,21 +583,12 @@ class VKGroups(App, AuthorizationOnVK, GetAndSaveLoginPassword):
         self.file_manager.show(directory)
 
     def show_posts(self, instance_tab=None):
-        # Открываем ранее загруженный список постов.
-        if self.box_posts:
-            self.box_posts.show_comments = False
-            self.box_posts.items_list = []
-            self.box_posts.ids.rv.data = self.box_posts.copy_rv_data
-            return
 
-        if instance_tab:
-            instance_tab.clear_widgets()
-        else:
-            self.current_screen_tab.clear_widgets()
-
-        # Получаем список постов от сервера.
-        self.box_posts = BoxPosts(_app=self)
-        self.box_posts.show_posts()
+        self.current_screen_tab.clear_widgets()
+        if not self.box_posts:
+            self.box_posts = BoxPosts(_app=self)
+        self.box_posts.clear()
+        self.box_posts.show_posts(increment=False)
 
     def events_program(self, instance, keyboard, keycode, text, modifiers):
         '''Вызывается при нажатии кнопки Меню или Back Key
@@ -638,6 +629,7 @@ class VKGroups(App, AuthorizationOnVK, GetAndSaveLoginPassword):
                         self.previous_image.dismiss()
                         return
                 if self.box_posts and self.box_posts.show_comments:
+                    self.box_posts.show_comments = False
                     self.show_posts()
                     return
                 self.dialog_exit()
