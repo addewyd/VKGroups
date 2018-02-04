@@ -410,12 +410,6 @@ class VKGroups(App, AuthorizationOnVK, GetAndSaveLoginPassword):
         )
         self.screen.ids.load_screen.add_widget(box)
 
-    def clear_box_for_attach(self):
-        self.box_for_attach_image = None
-        self.box_for_attach_file = None
-        self.attach_file = []
-        self.attach_image = []
-
     @thread
     def send_post(self, text):
         self.result_sending_post, text_error = \
@@ -441,7 +435,7 @@ class VKGroups(App, AuthorizationOnVK, GetAndSaveLoginPassword):
             Clock.unschedule(self.show_result_sending_posts)
             self.result_sending_post = None
             toast(message)
-            self.clear_box_for_attach()
+            self.clear_box_for_attach(remove_all=True)
 
         message = self.translation._('Sent!')
         if self.result_sending_post:
@@ -482,6 +476,19 @@ class VKGroups(App, AuthorizationOnVK, GetAndSaveLoginPassword):
                 Clock.schedule_interval(
                     self.show_result_sending_posts, 0
                 )
+
+    def clear_box_for_attach(self, remove_all=False):
+        self.attach_file = []
+        self.attach_image = []
+        
+        if remove_all:
+            if self.box_for_attach_image:
+                self.form_for_messages.remove_widget(self.box_for_attach_image)
+            if self.box_for_attach_file:
+                self.form_for_messages.remove_widget(self.box_for_attach_file)
+
+        self.box_for_attach_image = None
+        self.box_for_attach_file = None
 
     def remove_attach(self, select_instance_attach):
         '''Удаляет превью файлов и изображений из формы для отправки сообщений.'''
