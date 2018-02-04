@@ -446,9 +446,8 @@ class VKGroups(App, AuthorizationOnVK, GetAndSaveLoginPassword):
         message = self.translation._('Sent!')
         if self.result_sending_post:
             # Обновляем списки постов/комментариев.
-            self.box_posts.update_posts()
-            if self.manager.current != 'navigation button':
-                pass
+            if self.name_press_tab != 'Home_page':
+                self.box_posts.update_posts()
             unschedule()
         elif self.result_sending_post is False:
             message = self.translation._('Error while sending!')
