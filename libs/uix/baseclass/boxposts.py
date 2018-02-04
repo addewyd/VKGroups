@@ -62,7 +62,7 @@ class BoxPosts(FloatLayout):
             self.rec = Rectangle(pos=(0, 0), size=self.size)
             self.bind(size=self.check_size, pos=self.check_pos)
 
-    #@thread
+    @thread
     def get_and_set_json_info_for_post_or_comments(self):
         '''Получает и присваивает json с информацией о постах/комментариях
         атрибуту items_list.'''
