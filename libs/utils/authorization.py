@@ -41,6 +41,8 @@ class GetAndSaveLoginPassword(object):
         # TODO: Сохранить access_token и зашифровать его.
         self.regdata['login'] = login
         self.regdata['password'] = password
+        self.login = login
+        self.password = password
         self.config.set('General', 'regdata', self.regdata)
         self.config.set('General', 'last_group', group_id)
         self.config.write()
