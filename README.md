@@ -47,6 +47,10 @@ python3 main.py
 <img src="https://raw.githubusercontent.com/HeaTTheatR/VKGroups/master/data/screenshots/previous_3.jpg" 
 align="center"/>
 
+ВИДЕО ОБЗОР РАБОТЫ ПРИЛОЖЕНИЯ
+-----------------------------
+[![Watch the video](https://raw.githubusercontent.com/HeaTTheatR/VKGroups/master/data/images/presplash.png)](https://youtube.com/watch?v=WpgGtYcLogI)
+
 Пожалуйста, пришлите лог ошибки, если приложение не запустится или даст сбой в процессе использования. Лог ошибки пишется в корневую директорию проекта под именем error.log.
 
 ЛИЦЕНЗИЯ
