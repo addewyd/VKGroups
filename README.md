@@ -6,7 +6,7 @@ VKGroups
 <img src="https://raw.githubusercontent.com/HeaTTheatR/VKGroups/master/data/screenshots/previous_1.jpg" 
 align="center"/>
 
-VKGroups находится в процессе разработки и пока не рекомендуется для использования.
+*VKGroups находится в процессе разработки и не рекомендуется для использования.* Не реализована двухфакторная авторизация. Поверхностное тестирование на различных группах ВКонтакте. 
 
 <img src="https://raw.githubusercontent.com/HeaTTheatR/VKGroups/master/data/screenshots/previous_2.jpg" 
 align="center"/>
@@ -49,7 +49,8 @@ align="center"/>
 
 ВИДЕО ОБЗОР РАБОТЫ ПРИЛОЖЕНИЯ
 -----------------------------
-[![Watch the video](https://raw.githubusercontent.com/HeaTTheatR/VKGroups/master/data/images/presplash.png)](https://youtube.com/watch?v=WpgGtYcLogI)
+
+<a href="https://youtube.com/watch?v=WpgGtYcLogI"><img src="https://raw.githubusercontent.com/HeaTTheatR/VKGroups/master/data/images/presplash.jpg" align="center"></a>
 
 Пожалуйста, пришлите лог ошибки, если приложение не запустится или даст сбой в процессе использования. Лог ошибки пишется в корневую директорию проекта под именем error.log.
 
