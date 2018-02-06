@@ -23,7 +23,7 @@ import traceback
 NICK_NAME_AND_NAME_REPOSITORY = 'HeaTTheatR/VKGroups'
 
 directory = os.path.split(os.path.abspath(sys.argv[0]))[0]
-sys.path.insert(0, os.path.join(directory, 'libs/applibs'))
+sys.path.insert(0, os.path.join(directory, os.path.join('libs', 'applibs')))
 
 try:
     import webbrowser
