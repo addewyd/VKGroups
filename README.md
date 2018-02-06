@@ -3,7 +3,7 @@ VKGroups
 
 Приложение для просмотра и написания постов/комментариев в группах ВКонтакте.
 
-[![Build Status](https://travis-ci.org/HeaTTreatR/VKGroups.svg?branch=master)](https://travis-ci.org/HeaTTreatR/VKGroups)
+[![Build Status](https://travis-ci.org/HeaTTheatR/VKGroups.svg?branch=master)](https://travis-ci.org/HeaTTheatR/VKGroups)
 
 <img src="https://raw.githubusercontent.com/HeaTTheatR/VKGroups/master/data/screenshots/previous_1.jpg" 
 align="center"/>
