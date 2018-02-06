@@ -20,5 +20,4 @@ before_script:
     export PYTHONPATH=$PYTHONPATH:$(pwd);
     mkdir -p ~/.config;
 
-script:
-  - python main.py
+script: python main.py
