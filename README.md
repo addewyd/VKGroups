@@ -52,7 +52,7 @@ align="center"/>
 ВИДЕО ОБЗОР РАБОТЫ ПРИЛОЖЕНИЯ
 -----------------------------
 
-<a href="https://youtube.com/watch?v=WpgGtYcLogI" align="center"><img src="https://raw.githubusercontent.com/HeaTTheatR/VKGroups/master/data/images/presplash.jpg"></a>
+<video>https://youtube.com/watch?v=GtWsHjGbPSc</video>
 
 Пожалуйста, пришлите лог ошибки, если приложение не запустится или даст сбой в процессе использования. Лог ошибки пишется в корневую директорию проекта под именем error.log.
 
