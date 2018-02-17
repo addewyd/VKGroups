@@ -21,4 +21,4 @@ before_script:
     export PYTHONPATH=$PYTHONPATH:$(pwd);
     mkdir -p ~/.config;
 
-script: python test/test_app.py
+script: python -m unittest test/test_app.py
