@@ -5,10 +5,8 @@ Copyright © 2010-2018 HeaTTheatR
 
 Для предложений и вопросов:
 <kivydevelopment@gmail.com>
-
 Данный файл распространяется по условиям той же лицензии,
 что и фреймворк Kivy.
-
 '''
 
 from kivy.uix.boxlayout import BoxLayout
@@ -22,8 +20,6 @@ from kivymd.vendor.navigationdrawer import NavigationDrawer
 
 Builder.load_string("""
 #:import Window kivy.core.window.Window
-
-
 <ModifiedNavigationDrawer>:
     canvas:
         Color:
@@ -37,10 +33,10 @@ Builder.load_string("""
         Rectangle:
             size: Window.size
             pos: 0, 0
-
     BoxLayout:
-        size_hint_y: 'None'
+        size_hint_y: None
         orientation: 'vertical'
+        height: self.minimum_height
 """)
 
 
